@@ -24,7 +24,7 @@ export type MealPlan = z.infer<typeof schema>;
 export type PlanInput = { goal: string; diet: string[]; onHand: string; servings: number; budget: number | null };
 
 export async function generateMealPlan(input: PlanInput): Promise<MealPlan> {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env['LOVABLE_API_KEY'];
   if (!apiKey) throw new Error("AI is not configured.");
   const provider = createOpenAI({
     baseURL: "https://ai.gateway.lovable.dev/v1",
